@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+/*
+  Loginex Dashboard — Enterprise SaaS Design System 
+*/
+@theme {
+  /* ── Brand Palette (4 Colors) ── */
+  
+  --color-cream: #FDFBF7;
+  --color-black: #1A1A1A;
+  --color-red: #E53935;
+  --color-gray: #9E9E9E;
+
+  --color-surface-50:  #FDFBF7; 
+  --color-surface-900: #1A1A1A; 
+
+  /* ── Semantic Tokens ── */
+  --color-background: #FDFBF7;
+  --color-foreground: #1A1A1A;
+  --color-card: rgba(255, 152, 0, 0.12); 
+  --color-card-foreground: #1A1A1A;
+  --color-primary: #1A1A1A;
+  --color-primary-foreground: #FDFBF7;
+  --color-border: #9E9E9E;
+  
+  --radius-xl: 0.75rem;
+
+  /* ── Animations ── */
+  --animate-shimmer:   shimmer 2s infinite;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-float:     float 3s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1;   transform: scale(1);    }
+    50%       { opacity: 0.5; transform: scale(0.85); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-4px); }
+  }
+}
+
+/* ── Base Styles ── */
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    background-color: var(--color-background) !important;
+    color: var(--color-foreground) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: rgba(229, 57, 53, 0.2);
+    color: #df100d65;
+  }
+}
+
+/* ── Custom Utilities ── */
+@utility card-outer {
+    background: linear-gradient(135deg, #7a1c22ff 0%, #62161aff 50%, #2a080aff 100%) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+
+    &:hover {
+        transform: translateY(-4px) scale(1.005) !important;
+        box-shadow: 0 20px 50px 0 rgba(98, 22, 26, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+}
+
+@utility card-inner {
+    background: rgba(255, 255, 255, 0.15) !important; /* Lighter white for high contrast */
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+    color: #FFFFFF !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+@utility card-internal {
+    background: #ffffff !important;
+    border: 2px solid #62161aff !important;
+    border-radius: 12px !important;
+    color: #1A1A1A !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+
+@layer utilities {
+  
+  /* Cards Hierarchy (Legacy Support) */
+
+  /* Map existing classes to hierarchy */
+  .card-dark,
+  .card-darker,
+  .stat-card {
+    background: linear-gradient(135deg, #7a1c22ff 0%, #62161aff 50%, #2a080aff 100%) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45) !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+
+    &:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 20px 50px 0 rgba(98, 22, 26, 0.5) !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+  }
+
+  .glass-card,
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+    color: #FFFFFF !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .border-dashed {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* Gradients */
+  .gradient-brand {
+    background: #FDFBF7 !important; 
+  }
+  .gradient-accent {
+    background: #e0000a !important;
+    color: #FFFFFF !important;
+  }
+  .gradient-card {
+    background: linear-gradient(135deg, #7a1c22ff 0%, #62161aff 50%, #2a080aff 100%) !important;
+    color: #FFFFFF !important;
+  }
+  .gradient-header {
+    background: transparent !important;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    background: #1A1A1A !important;
+    color: #FDFBF7 !important;
+    border-radius: 8px !important;
+    border: none !important;
+  }
+  .btn-primary:hover {
+    background: #e0000a !important;
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+  }
+  .btn-secondary:hover {
+    background: #FFFFFF !important;
+    color: #e0000a !important;
+    border-color: #FFFFFF !important;
+  }
+
+  /* Input styles */
+  .input-dark,
+  input {
+    background: #ffffff !important;
+    border: 1px solid #9E9E9E !important;
+    color: #1A1A1A !important;
+  }
+  .input-dark:focus,
+  input:focus {
+    border-color: #e0000a !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(224, 0, 10, 0.1) !important;
+  }
+
+  /* Table styles */
+  .table-dark th {
+    background: #FDFBF7 !important;
+    color: #1A1A1A !important;
+    border-bottom: 2px solid #9E9E9E !important;
+  }
+  .table-dark td {
+    border-bottom: 1px solid rgba(158, 158, 158, 0.3) !important;
+    color: #1A1A1A !important;
+  }
+  .table-dark tr:hover td {
+    background: rgba(158, 158, 158, 0.05) !important;
+  }
+
+  /* Badges */
+  .badge-pending {
+    background: #FDFBF7 !important;
+    color: #9E9E9E !important;
+    border: 1px solid #9E9E9E !important;
+  }
+  .badge-processing {
+    background: rgba(224, 0, 10, 0.1) !important;
+    color: #e0000a !important;
+    border: 1px solid rgba(224, 0, 10, 0.3) !important;
+  }
+  .badge-shipped {
+    background: rgba(26, 26, 26, 0.1) !important;
+    color: #1A1A1A !important;
+    border: 1px solid rgba(26, 26, 26, 0.3) !important;
+  }
+  .badge-delivered {
+    background: rgba(26, 26, 26, 0.05) !important;
+    color: #1A1A1A !important;
+    border: 1px solid #1A1A1A !important;
+  }
+
+  /* Section label */
+  .section-label {
+    color: #9E9E9E !important;
+  }
+
+}
+
+/* ── Scrollbar Overrides ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #FDFBF7; }
+::-webkit-scrollbar-thumb { background: #9E9E9E; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #1A1A1A; }
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2px solid rgba(26, 26, 26, 0.4) !important;
+}

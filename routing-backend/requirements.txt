@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+networkx
+osmnx
+geopy
+shapely
+requests
+python-multipart

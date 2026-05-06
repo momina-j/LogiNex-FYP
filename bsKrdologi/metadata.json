@@ -1,0 +1,5 @@
+{
+  "name": "LOGINEX",
+  "description": "Logistics intelligence platform for Pakistan's e-commerce industry",
+  "requestFramePermissions": ["geolocation", "microphone"]
+}

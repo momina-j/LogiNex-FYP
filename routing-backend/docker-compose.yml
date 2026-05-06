@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  routing-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  # Optional OSRM service if high-speed routing is required for a fixed region
+  # osrm:
+  #   image: osrm/osrm-backend
+  #   volumes:
+  #     - ./osrm-data:/data
+  #   command: osrm-routed --algorithm mld /data/region.osrm
+  #   ports:
+  #     - "5000:5000"
